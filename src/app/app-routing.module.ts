@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'schema',
         loadChildren: () =>
-          import('./shema/shema.module').then((m) => m.ShemaModule),
+          import('./schema/schema.module').then((m) => m.SchemaModule),
       },
     ],
   },

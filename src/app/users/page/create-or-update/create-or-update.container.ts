@@ -12,7 +12,6 @@ export class CreateOrUpdateContainer {
   constructor(private usersService: UsersService, private router: Router) {}
 
   onCompleteUser(data: Record<string, string>) {
-    console.log('pcurich :>> ', data);
     let model = new UserModel();
     model.applicationCode = data['applicationCode'];
     model.userCode = data['userCode'];
@@ -20,7 +19,6 @@ export class CreateOrUpdateContainer {
     model.email = data['email'];
 
     this.usersService.create(model).subscribe((x) => {
-      console.log('object created :>> ', x.body);
       this.router.navigate(['/users']);
     });
   }

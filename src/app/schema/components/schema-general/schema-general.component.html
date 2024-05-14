@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card">
+    <h5 class="card-title">Configuración General</h5>
+    <div class="card-body">
+      <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label" for="endPoint">endPoint: </label>
+          <input
+            id="endPoint"
+            class="form-control"
+            type="text"
+            formControlName="endPoint"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="verb">verb: </label>
+          <select formControlName="verb" value="GET">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="PATH">PATH</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="description">description: </label>
+          <textarea
+            id="description"
+            class="form-control"
+            type="text"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

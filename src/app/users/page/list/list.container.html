@@ -1,47 +1,56 @@
-<button (click)="goToCreateUser()">Crear Usuario</button>
+<div class="container">
+  <div class="mt-4">
+    <button type="button" class="btn btn-success" (click)="goToCreateUser()">
+      Crear Usuario
+    </button>
+  </div>
 
-<div style="width: 100%">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">User Email</th>
-        <th scope="col">User Code</th>
-        <th scope="col">Application Code</th>
-        <th scope="col">Environment</th>
-        <th scope="col">Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of users$ | async; let i=index">
-        <th scope="row">{{item.email}}</th>
-        <td>{{item.userCode}}</td>
-        <td>{{item.applicationCode}}</td>
-        <td>{{item.environment}}</td>
-        <td>
-          <button class="link-opacity-100" (click)="dialog.showModal()">
-            Ver
-          </button>
-          <a [routerLink]="['/user/bob']" class="link-opacity-100">Eliminar</a>
-          <a [routerLink]="['/update',item.id]" class="link-opacity-100"
-            >Editar</a
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div style="width: 100%">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">User Email</th>
+          <th scope="col">User Code</th>
+          <th scope="col">Application Code</th>
+          <th scope="col">Environment</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users$ | async; let i=index">
+          <th scope="row">{{item.email}}</th>
+          <td>{{item.userCode}}</td>
+          <td>{{item.applicationCode}}</td>
+          <td>{{item.environment}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="openModal(item)"
+            >
+              Ver
+            </button>
+            <a [routerLink]="['/user/bob']" class="link-opacity-100"
+              >Eliminar</a
+            >
+            <a [routerLink]="['/update',item.id]" class="link-opacity-100"
+              >Editar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <dialog #dialog>
+  <div>userCode : {{user.userCode}}</div>
+  <div>email : {{user.email}}</div>
+  <div>applicationCode : {{user.applicationCode}}</div>
+  <div>environment : {{user.environment}}</div>
   <div>
-    Your country:
-    <select>
-      <option value="default">Choose…</option>
-      <option>United States</option>
-      <option>France</option>
-      <option>Australia</option>
-    </select>
-  </div>
-  <div>
-    <button (click)="dialog.close()">OK</button>
+    <button type="button" class="btn btn-primary" (click)="dialog.close()">
+      OK
+    </button>
   </div>
 </dialog>
